@@ -2,8 +2,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class NLParser {
@@ -11,14 +13,20 @@ public class NLParser {
 	/**
 	 * @param args
 	 */
-	private static final String documentPath = "/home/damon/ETop/Terms/";
-	private static final String stopWordPath = "/home/damon/ETop/stopwords.csv";
+	private static final String documentPath = "/home/garygu/Desktop/Terms/";
+	private static final String stopWordPath = "/home/garygu/Desktop/stopwords.csv";
 	private static String[] stopWord;
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		readStopWords(stopWordPath);
-		
+		String str = "move delete ok the write test ";
+		Map<String,Double>map = new HashMap<String,Double>();
+		map = getTFIDF(str);
+		cos cosin = new cos();
+		cosin.getid();
+		cosin.cos(map);
+//		System.out.println(map.entrySet());
 	}
 	
 	//return the TF-IDF of all word
