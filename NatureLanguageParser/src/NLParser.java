@@ -20,12 +20,19 @@ public class NLParser {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		readStopWords(stopWordPath);
-		String str = "move delete ok the write test ";
+		String str = "is a move delete ok the write test copy comment";
 		Map<String,Double>map = new HashMap<String,Double>();
 		map = getTFIDF(str);
+		
+//		for(String s : map.keySet()){
+//			System.out.println(s+":"+map.get(s));
+//		}
+		
+		
 		cos cosin = new cos();
 		cosin.getid();
 		cosin.cos(map);
+		
 //		System.out.println(map.entrySet());
 	}
 	
@@ -42,6 +49,7 @@ public class NLParser {
 				termsMap.put(s, termsMap.get(s)+1);
 			}
 		}
+		
 		for(String term : termsMap.keySet()){
 			double TF;
 			//System.out.println(term + " " + termsMap.get(term));				
@@ -90,7 +98,7 @@ public class NLParser {
 			}
 			if(match) continue;
 		}
-		return Math.log10((double)files.length/D_count);
+		return Math.log10((double)files.length/(D_count+1));
 	}
 
 	//get the terms from the sentence entered by user
